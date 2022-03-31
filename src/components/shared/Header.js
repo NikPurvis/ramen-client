@@ -8,12 +8,15 @@ const linkStyle = {
 }
 const authenticatedOptions = (
 	<>
-		<Nav.Item>
+		<Nav.Item className="m-2">
+			<Link to='addRamen' style={linkStyle}>Add New Ramen</Link>
+        </Nav.Item>
+		<Nav.Item className="m-2">
 			<Link to='change-password' style={linkStyle}>
 				Change Password
 			</Link>
 		</Nav.Item>
-		<Nav.Item>
+		<Nav.Item className="m-2">
 			<Link to='sign-out' style={linkStyle}>
 				Sign Out
 			</Link>
@@ -23,31 +26,35 @@ const authenticatedOptions = (
 
 const unauthenticatedOptions = (
 	<>
-        <Nav.Item>
-		    <Link to='sign-up' style={linkStyle}>Sign Up</Link>
+        <Nav.Item className="m-2">
+			<Link to='sign-up' style={linkStyle}>Sign Up</Link>
         </Nav.Item>
-        <Nav.Item>
-		    <Link to='sign-in' style={linkStyle}>Sign In</Link>
+        <Nav.Item className="m-2">
+			<Link to='sign-in' style={linkStyle}>Sign In</Link>
         </Nav.Item>
 	</>
 )
 
 const alwaysOptions = (
 	<>
-		<Nav.Link>
-			<Link to='/' style={linkStyle}>
-				Home
-			</Link>
-		</Nav.Link>
+		<Nav.Item className="m-2">
+				<Link to='/' style={linkStyle}>
+					Home
+				</Link>
+		</Nav.Item>	
 	</>
 )
 
 const Header = ({ user }) => (
-	<Navbar bg='primary' variant='dark' expand='md'>
-		<Navbar.Brand>
-            <Link to='/' style={linkStyle}>
-                react-auth-template
-            </Link>
+	<Navbar bg='success' variant='dark' expand='md'>
+		<Navbar.Brand className="m-2">
+			<img
+				src="/ramen.png"
+				width="50"
+				height="50"
+				className="d-inline-block align-top"
+				alt="Ramen!"
+			/>			
         </Navbar.Brand>
 		<Navbar.Toggle aria-controls='basic-navbar-nav' />
 		<Navbar.Collapse id='basic-navbar-nav'>
