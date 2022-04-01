@@ -77,6 +77,14 @@ const CreateRamen = (props) => {
                     name="sodium"
                     onChange={handleChange}
                 />
+                <Form.Label>Image</Form.Label>
+                <Form.Control
+                    placeholder="Let's see a picture of that beauty."
+                    value={ramen.imageMain}
+                    type="string"
+                    name="imageMain"
+                    onChange={handleChange}
+                />
                 <Form.Check
                     label="Have you tried it?"
                     name="haveTried"

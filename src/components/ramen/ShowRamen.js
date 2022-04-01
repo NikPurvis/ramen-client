@@ -12,7 +12,8 @@ const ShowRamen = (props) => {
 
     useEffect(() => {
         getOneRamen(id)
-        .then(res => setRamen(res.data.ramen))
+            .then(res => setRamen(res.data.ramen))
+            .then (console.log("heeeere's ramen:", ramen))
             .catch(console.error)
     }, [id])
 
@@ -32,6 +33,7 @@ const ShowRamen = (props) => {
         <Container className="fluid">
             <Card>
                 <Card.Header>{ramen.flavor}</Card.Header>
+                {/* <Card.Img variant="top" style={{ width: "100%" }} src={process.env.PUBLIC_URL + ramen.imageDetail} /> */}
                 <Card.Body>
                     <Card.Text>
                         {ramen.description}<br/>

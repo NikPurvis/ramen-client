@@ -46,8 +46,8 @@ const IndexRamen = (props) => {
         // console.log("ramen:", ramen)
         // console.log("ramenJSX:", ramen.Jsx)
         ramenCards = ramen.map(ramen => (
-            <Card key={ramen._id} style={{ width: "30% "}} className="m-2" >
-                <Card.Img variant="top" src={ramen.imageMain} />
+            <Card key={ramen._id} style={{ width: "30%" }} className="m-2" >
+                <Card.Img variant="top" style={{ width: "100%" }} src={ramen.imageMain} />
                 <Card.Title>{ramen.flavor}</Card.Title>
                 <Card.Body>                    
                     <Card.Text>
