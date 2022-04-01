@@ -2,6 +2,7 @@
 import React, { useState, useEffect } from "react"
 import { getAllRamen } from "../../api/ramen"
 import { Card } from "react-bootstrap"
+import { Link } from "react-router-dom"
 
 
 // Declaring a style object to wrap around the ramen cards
@@ -13,6 +14,7 @@ const cardContainer = {
 
 
 const IndexRamen = (props) => {
+    // Destructuring the useState React hook
     const [ramen, setRamen] = useState(null)
 
     useEffect(() => {
@@ -47,12 +49,13 @@ const IndexRamen = (props) => {
             <Card key={ramen._id} style={{ width: "30% "}} className="m-2" >
                 <Card.Header>{ramen.flavor}</Card.Header>
                 <Card.Body>
-                    <Card.Text>{ramen.description}</Card.Text>
+                    <Card.Text>
+                        <Link to={`/ramen/${ramen._id}`}>{ramen.description}</Link>
+                    </Card.Text>
                 </Card.Body>
             </Card>
         ))
     }
-
 
     return (
         <>
