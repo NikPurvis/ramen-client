@@ -9,7 +9,7 @@ const linkStyle = {
 const authenticatedOptions = (
 	<>
 		<Nav.Item className="m-2">
-			<Link to='addRamen' style={linkStyle}>Add New Ramen</Link>
+			<Link to="addRamen" style={linkStyle}>Add New Ramen</Link>
         </Nav.Item>
 		<Nav.Item className="m-2">
 			<Link to='change-password' style={linkStyle}>

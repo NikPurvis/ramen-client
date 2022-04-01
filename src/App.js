@@ -13,6 +13,7 @@ import SignIn from './components/auth/SignIn'
 import SignOut from './components/auth/SignOut'
 import ChangePassword from './components/auth/ChangePassword'
 import ShowRamen from "./components/ramen/ShowRamen"
+import CreateRamen from "./components/ramen/CreateRamen"
 
 const App = () => {
 
@@ -69,6 +70,14 @@ const App = () => {
 							<ChangePassword msgAlert={msgAlert} user={user} />
 							</RequireAuth>}
 					/>
+					<Route
+						path="/addRamen"
+						element={
+							<RequireAuth user={user}>
+								<CreateRamen msgAlert={msgAlert} user={user} />
+							</RequireAuth>
+						}
+					/>	
 					<Route
 						path="/ramen/:id"
 						element={<ShowRamen msgAlert={msgAlert} user={user} />}

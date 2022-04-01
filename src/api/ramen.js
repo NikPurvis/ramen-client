@@ -18,6 +18,19 @@ export const getOneRamen = (ramenId) => {
 
 // POST
 // API call to create a new ramen.
+// The arguemnts are passing the things we need to make the POST happen (user info and newRamen object with the entered details).
+export const createRamen = (user, newRamen) => {
+    console.log("user:", user)
+    console.log("newRamen:", newRamen)
+    return axios({
+        url: `${apiUrl}/ramen`,
+        method: "POST",
+        headers: {
+            Authorization: `Token token=${user.token}`
+        },
+        data: {ramen: newRamen }
+    })
+}
 
 // PATCH
 // API call to upset an existing ramen.
