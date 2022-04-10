@@ -20,10 +20,10 @@ const App = () => {
 	const [user, setUser] = useState(null)
 	const [msgAlerts, setMsgAlerts] = useState([])
 
-	console.log('user in app', user)
-	console.log('message alerts', msgAlerts)
+	console.log("user in app:", user)
+	console.log("msgAlert in app:", msgAlerts)
 	const clearUser = () => {
-		console.log('clear user ran')
+		console.log("clearUser ran")
 		setUser(null)
 	}
 

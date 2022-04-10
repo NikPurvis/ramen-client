@@ -1,13 +1,12 @@
 import IndexRamen from "./ramen/IndexRamen"
 
 const Home = (props) => {
-	// const { msgAlert, user } = props
-	console.log('props in home', props)
+	const { user, msgAlert } = props
 
 	return (
 		<>
 			<h2>Home Page</h2>
-			<IndexRamen />
+			<IndexRamen user={user} msgAlert={msgAlert} />
 		</>
 	)
 }
