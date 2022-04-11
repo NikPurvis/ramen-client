@@ -4,7 +4,7 @@ import { getOneRamen } from "../../api/ramen"
 import { useParams } from "react-router-dom"
 import { Button, Spinner, Container, Card } from "react-bootstrap"
 // import "../../sass/ShowRamen.scss"
-import "../../stylesheets/ShowRamen.css"
+// import "../../stylesheets/ShowRamen.css"
 
 
 const ShowRamen = (props) => {

@@ -1,12 +1,14 @@
 import IndexRamen from "./ramen/IndexRamen"
+import { Container } from "react-bootstrap"
 
 const Home = (props) => {
 	const { user, msgAlert } = props
 
 	return (
 		<>
-			<h2>Home Page</h2>
+		<Container>
 			<IndexRamen user={user} msgAlert={msgAlert} />
+		</Container>
 		</>
 	)
 }

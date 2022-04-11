@@ -5,6 +5,10 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  /* background-image: url(./components/shared/ramenbowl-bg.jpg); */
+  background-image: linear-gradient(rgb(247, 213, 227), rgb(248, 63, 158));
+  background-repeat: no-repeat;
+  background-attachment: fixed;
 }
 
 code {
