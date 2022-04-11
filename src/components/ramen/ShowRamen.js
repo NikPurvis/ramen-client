@@ -2,8 +2,10 @@
 import React, { useState, useEffect } from "react"
 import { getOneRamen } from "../../api/ramen"
 import { useParams } from "react-router-dom"
-import { Spinner, Container, Card } from "react-bootstrap"
-// import Images from "../images"
+import { Button, Spinner, Container, Card } from "react-bootstrap"
+// import "../../sass/ShowRamen.scss"
+import "../../stylesheets/ShowRamen.css"
+
 
 const ShowRamen = (props) => {
     const [ramen, setRamen] = useState(null)
@@ -34,22 +36,23 @@ const ShowRamen = (props) => {
 
     return (
         // <p>here's some {ramen.flavor}</p>
-        <React.StrictMode>
         <Container className="fluid">
-            <Card>
-                <Card.Header>{ramen.flavor}</Card.Header>
-                <Card.Img variant="top" style={{ width: "100%" }} src={detailImg} />
-                
+            <Card className="ramen-detail" style={{ width: "30rem" }}>
+                <Card.Img className="ramen-detail-img" variant="top" style={{ width: "100%" }} src={detailImg} />
+                <Card.Title>{ramen.flavor}</Card.Title>
+                <Card.Subtitle className="mb-2 text-medium-emphasis">{ramen.description}</Card.Subtitle>                
                 <Card.Body>
                     <Card.Text>
-                        {ramen.description}<br/>
-                        {ramen.sodium}mg sodium per packet<br/>
-                        Have you tried it? {ramen.haveTried ? "OH YEAH" : "No, and I must!"}
+                        <strong>{ramen.sodium}mg</strong> sodium per packet<br/>
+                        Have you tried it? <strong>{ramen.haveTried ? "OH YEAH" : "No, and I must!"}</strong>
                     </Card.Text>
                 </Card.Body>
+                <Card.Footer className="ramen-button-footer">
+                    <div><Button variant="info">Edit {ramen.flavor}</Button></div>
+                    <div><Button variant="danger">Delete {ramen.flavor}</Button></div>
+                </Card.Footer>
             </Card>
         </Container>
-        </React.StrictMode>
     )
 }
 

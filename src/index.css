@@ -11,3 +11,18 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+.ramen-detail {
+  margin-top: 50px;
+  padding: 10px;
+}
+
+.ramen-detail-img {
+  margin: 3 3 10 3;
+}
+
+.ramen-button-footer {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
