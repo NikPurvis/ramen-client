@@ -37,3 +37,13 @@ export const createRamen = (user, newRamen) => {
 
 // DELETE
 // API call to destroy a ramen from the database.
+export const removeRamen = (user, ramenId) => {
+    console.log("user:", user)
+    return axios({
+        url: `${apiUrl}/ramen/${ramenId}`,
+        method: "DELETE",
+        headers: {
+            Authorization: `Token token=${user.token}`
+        }
+    })
+}

@@ -9,10 +9,11 @@ import { useNavigate } from "react-router-dom"
 
 // We'll need the user and msgAlert props here as we've required an authorized login to make a new document in the database.
 const CreateRamen = (props) => {
-    const {user} = props
-    console.log("user prop in CreateRamen:", user)
+    const { user, msgAlert } = props
+    // console.log("user prop in CreateRamen:", user)
     const [ramen, setRamen] = useState({flavor: "", description: "", sodium: "", haveTried: false})
-    console.log("the ramen in Create:", ramen)
+    // console.log("the ramen in Create:", ramen)
+    const navigate = useNavigate()
     
     const handleChange = (e) => {
         // e === event
@@ -50,9 +51,23 @@ const CreateRamen = (props) => {
         e.preventDefault()
 
         createRamen(user, ramen)
-            .then(res => {console.log(res.data.ramen)})
-            .catch(err => console.log(err))
-            console.log("this is the ramen:", ramen)
+            // If successful, navigate to the new show page...
+            .then(res => {navigate(`/ramen/${res.data.ramen._id}`)})
+            // ...and show a success message.
+            .then(() =>
+                msgAlert ({
+                    heading: "Got it!",
+                    message: "New ramen flavor added.",
+                    variant: "success"
+                }))
+            // If there's a problem, show an error message.
+            .catch(() =>
+                msgAlert({
+                    heading: "Oops!",
+                    message: "Something went wrong, try again.",
+                    variant: "danger"
+                }))
+            // console.log("this is the ramen:", ramen)
     }
 
     return (
@@ -86,6 +101,14 @@ const CreateRamen = (props) => {
                     value={ramen.imageMain}
                     type="string"
                     name="imageMain"
+                    onChange={handleChange}
+                />
+                <Form.Label>Image</Form.Label>
+                <Form.Control
+                    placeholder="How about one for the detail?"
+                    value={ramen.imageDetail}
+                    type="string"
+                    name="imageDetail"
                     onChange={handleChange}
                 />
                 <Form.Check

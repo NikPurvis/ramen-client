@@ -1,7 +1,7 @@
 // Import dependencies
 import React, { useState, useEffect } from "react"
-import { getOneRamen } from "../../api/ramen"
-import { useParams } from "react-router-dom"
+import { getOneRamen, removeRamen } from "../../api/ramen"
+import { useNavigate, useParams } from "react-router-dom"
 import { Button, Spinner, Container, Card } from "react-bootstrap"
 // import "../../sass/ShowRamen.scss"
 // import "../../stylesheets/ShowRamen.css"
@@ -9,10 +9,12 @@ import { Button, Spinner, Container, Card } from "react-bootstrap"
 
 const ShowRamen = (props) => {
     const [ramen, setRamen] = useState(null)
-    console.log("props in showRamen:", props)
+    // console.log("props in showRamen:", props)
     const { id } = useParams()
-    console.log("id in showRamen:", id)
+    // console.log("id in showRamen:", id)
     // console.log("image detail?:", ramen.imageDetail)
+    const { user, msgAlert } = props
+    const navigate = useNavigate()
 
     useEffect(() => {
         getOneRamen(id)
@@ -21,6 +23,25 @@ const ShowRamen = (props) => {
             // .then (console.log("imageDetail:", ramen.imageDetail))
             .catch(console.error)
     }, [id])
+
+    const deleteThisRamen = () => {
+        removeRamen(user, id)
+            .then(() => {
+                msgAlert({
+                    heading: "Gone!",
+                    message: "Get that ramen out of here.",
+                    variant: "success"
+                })
+            })
+            .then (() => {navigate("/")})
+            .catch (() => {
+                msgAlert({
+                    heading: "Oops!",
+                    message: "Something went wrong, try again.",
+                    variant: "danger"
+                })
+            })
+    }
 
     if (!ramen) {
         return (
@@ -49,7 +70,13 @@ const ShowRamen = (props) => {
                 </Card.Body>
                 <Card.Footer className="ramen-button-footer">
                     <div><Button variant="info">Edit {ramen.flavor}</Button></div>
-                    <div><Button variant="danger">Delete {ramen.flavor}</Button></div>
+                    <div>
+                        <Button
+                            onClick={() => deleteThisRamen()}
+                            variant="danger">
+                            Delete {ramen.flavor}
+                        </Button>
+                    </div>
                 </Card.Footer>
             </Card>
         </Container>
